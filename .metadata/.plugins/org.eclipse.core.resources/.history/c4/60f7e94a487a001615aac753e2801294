@@ -1,0 +1,54 @@
+package Primerito;
+
+import java.io.*;
+
+public class BinarioLeerGuardar {
+	
+	public static byte[] leer_binario(String path){
+
+		byte[] datuak = new byte[8];
+		
+		try{
+			
+			FileInputStream fileinput = new FileInputStream(path);
+			BufferedInputStream bufferedinput = new BufferedInputStream(fileinput);
+			
+			bufferedinput.read(datuak);
+			bufferedinput.close();
+		
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		}
+		return datuak;
+	}
+	
+	public static void guardar_binario(byte[] datuak, String path){
+		try{			
+			FileOutputStream fileoutput = new FileOutputStream(path);
+			BufferedOutputStream bufferedoutput = new BufferedOutputStream(fileoutput);
+			
+			
+			bufferedoutput.write(datuak);
+			bufferedoutput.close();
+	
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		}
+	}
+	
+	public static void copiar_binario(String source, String destination){
+		
+		byte[] datuak = new byte[8];
+		
+			datuak = leer_binario(source);
+			guardar_binario(datuak, destination);
+			
+	}
+	
+	public static void main(String[] Args){
+
+		copiar_binario("prueba.bin","jacopia.bin");
+		
+	}
+
+}

@@ -1,0 +1,62 @@
+package Primerito;
+
+import java.io.*;
+
+public class AccesoFicheroCaracteres {
+	static String path = "prueba.txt";
+	
+	//FUNCIÓN PARA LEER UN FICHERO
+	public void leer (String ruta_fichero){
+		try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+		    String line;
+		    while ((line = br.readLine()) != null) {
+		    	System.out.println(line);
+		    }
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		}
+	}
+	
+	//FUNCIÓN PARA ESCRIBIR UN FICHERO SECUENCIAL
+	public void escribir (String ruta_fichero){
+		FileWriter fichero = null;
+		PrintWriter pw = null;
+		try{
+			fichero = new FileWriter(ruta_fichero);
+			pw = new PrintWriter(fichero);
+			for (int i=0; i<10; i++){
+				pw.println("Linea: " + (i+1));
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+		}finally{
+			try {
+				fichero.close();
+			} catch (IOException e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
+	
+	public void añadir (String ruta_fichero){		
+		try{
+			FileWriter fichero = new FileWriter(ruta_fichero, true);
+			PrintWriter pw = new PrintWriter(fichero);
+			//for (int i=0; i<10; i++){
+			
+				pw.println("extra");
+			//}
+				fichero.close();
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	public static void main(String[] Args){
+		AccesoFicheroCaracteres afc = new AccesoFicheroCaracteres();
+		afc.escribir(path);
+		//afc.añadir(path);
+		afc.leer(path);
+	}
+
+}
