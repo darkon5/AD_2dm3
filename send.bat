@@ -1,6 +1,6 @@
 @echo off
 title supah git script
-color 0a
+color 03
 cls
 :repe
 echo.
