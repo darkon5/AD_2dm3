@@ -1,0 +1,54 @@
+package Primerito;
+
+import java.io.*;
+import javax.xml.parsers.*;
+import org.w3c.dom.*;
+
+public class AccesoDOM {
+	
+	Document document;
+	
+	public void abrirXML_DOM (String path){
+		DocumentBuilderFactory factory = null;
+		DocumentBuilder builder = null;
+		File fichero = null;
+		
+		try{
+			fichero = new File(path);
+			factory = DocumentBuilderFactory.newInstance();
+			builder = factory.newDocumentBuilder();
+			document=builder.parse(fichero);
+			document= getDocumentElement();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	public void recorrer_DOM (Document doc){
+		Node raiz = doc.getFirstChild();
+		Node hijo;
+		NodeList hijos = raiz.getChildNodes();
+		
+		for(int i=0; i<hijos.getLength();i++){
+			hijo=hijos.item(i);
+			if (hijo.getNodeType()==Node.ELEMENT_NODE){
+				procesarHijosyMostrar(hijo);
+			}
+		}
+		
+	}
+	
+	public void procesarHijosyMostrar(Node hijo){
+		String datos;
+		datos = hijo.getAttributes().item(0).getNodeValue();
+		System.out.println("Publicado en: " + datos);
+	}
+	
+	public static void main(String[] args){
+		AccesoDOM acDOM = new AccesoDOM();
+		acDOM.abrirXML_DOM("LibrosXML.xml");
+		acDOM.recorrer_DOM(acDOM.getDocumentElement);
+	}
+
+}
