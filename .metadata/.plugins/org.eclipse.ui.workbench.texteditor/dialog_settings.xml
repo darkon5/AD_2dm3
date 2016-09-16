@@ -2,17 +2,21 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="Album" key="selection"/>
+		<item value="Autor" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="Grupo"/>
+			<item value="Album"/>
 			<item value="libro"/>
 			<item value="Autor"/>
 			<item value="static"/>
 		</list>
 		<list key="replacehistory">
+			<item value="Autor"/>
+			<item value="libro"/>
 			<item value="Album"/>
 			<item value="Grupo"/>
 			<item value=""/>
@@ -22,7 +26,7 @@
 		<item value="284" key="DIALOG_WIDTH"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 		<item value="390" key="DIALOG_HEIGHT"/>
-		<item value="826" key="DIALOG_X_ORIGIN"/>
-		<item value="273" key="DIALOG_Y_ORIGIN"/>
+		<item value="727" key="DIALOG_X_ORIGIN"/>
+		<item value="389" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>

@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="java.io.FileInputStream"/>
+<fullyQualifiedTypeName name="com.sun.org.apache.xml.internal.serialize.OutputFormat"/>
+<fullyQualifiedTypeName name="com.sun.org.apache.xml.internal.serialize.XMLSerializer"/>
 </qualifiedTypeNameHistroy>
