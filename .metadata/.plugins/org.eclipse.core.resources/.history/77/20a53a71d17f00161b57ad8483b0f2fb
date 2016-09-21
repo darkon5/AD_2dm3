@@ -3,14 +3,14 @@
 <libros>
   <libro publicado_en="1840">
   <Titulo>El Capote</Titulo>
-  <Autor>Nikolai</Autor>
+  <Autor componentes="4">Nikolai </Autor>
   </libro>
   <libro publicado_en="1840">
   <Titulo>El Sanador de caballos</Titulo>
-  <Autor>Gonzalo Giner</Autor>
+  <Autor componentes="5">Gonzalo giner </Autor>
   </libro>
   <libro publicado_en="1840">
   <Titulo>El nombre de la rosa</Titulo>
-  <Autor>Nikolai</Autor>
+  <Autor componentes="1">Nikolai </Autor>
   </libro>
 </libros>

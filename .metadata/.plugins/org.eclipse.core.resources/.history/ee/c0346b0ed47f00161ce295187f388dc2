@@ -1,6 +1,6 @@
 package Primerito;
 
-public class Libro {
+public class libro {
 	String publicadoen;
 	String titulo;
 	String autor;
