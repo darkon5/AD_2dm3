@@ -7,11 +7,12 @@ import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-import org.apache.xml.serialize.OutputFormat;
-import org.apache.xml.serialize.XMLSerializer;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
+import com.sun.org.apache.xml.internal.serialize.OutputFormat;
+import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
 
 public class AccesoDomObjeto {
 	
@@ -26,6 +27,41 @@ public class AccesoDomObjeto {
 }
 
 
+	public void añadirlibro(ArrayList<Libro> arrayLibros, String Año, String Titulo, String Autor){
+	    Libro libronew = new Libro();
+	    libronew.setPublicadoen(Año);
+	    libronew.setAutor(Autor);
+	    libronew.setTitulo(Titulo);
+	    arrayLibros.add(libronew);
+	  }
+
+	  public void mostrarArray(ArrayList<Libro>arrayLibros){
+	    for (int i=0; i<arrayLibros.size();i++){
+	      System.out.println("Publicado en: " + arrayLibros.get(i).getPublicadoen());
+	      System.out.println("Titulo: " + arrayLibros.get(i).getTitulo());
+	      System.out.println("Autor: " + arrayLibros.get(i).getAutor());
+	      System.out.println("--------------------------------------------" );
+	      
+	    }
+	  }
+	  
+	  public void modificarLibro(ArrayList<Libro> arrayLibros,String Titulo, String AñoNuevo){
+	    for (int i=0; i<arrayLibros.size();i++){
+	      if(arrayLibros.get(i).getTitulo().equals(Titulo)){
+	        arrayLibros.get(i).setPublicadoen(AñoNuevo);
+	      }
+	    }
+	  }
+
+	  public void eliminarLibro(ArrayList<Libro> arrayLibros,String Titulo){
+	    for (int i=0; i<arrayLibros.size();i++){
+	      if(arrayLibros.get(i).getTitulo().equals(Titulo)){
+	        arrayLibros.remove(i);
+	      }
+	    }
+	  }
+	  
+	  //public void deArray_DOM
 
 	//independiente del archivo de XML
 public void abrirXML_DOM(String ruta_archivo){
@@ -98,33 +134,37 @@ public void guardarDOM_XML(String ruta_archivo){
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		AccesoDomObjeto accDOM = new AccesoDomObjeto();
-		//pasamos del fichero XML al arbol DOM
-		accDOM.abrirXML_DOM("LibrosXML.xml");
-		//procesaremos el arbol
-		ArrayList <Libro> libros = accDOM.obtenerListaLibro(accDOM.getDocument());
-		for (int i=0; i<libros.size();i++){
-			System.out.println("Publicado en: " + libros.get(i).getPublicadoen());
-			System.out.println("Titulo: " + libros.get(i).getTitulo());
-			System.out.println("Autor: " + libros.get(i).getAutor());
-			System.out.println("_-------------------------------------------_");
+	    AccesoDomObjeto accDOM = new AccesoDomObjeto();
+	    //PAsamos del fichero xml al arbol DOM
+	    accDOM.abrirXML_DOM("LibrosXML.xml");
+	    //procesaremos el arbol
+	    ArrayList<Libro> libros= accDOM.obtenerListaLibro(accDOM.getDocument());
+	    /*
+	    for (int i=0; i<libros.size();i++){
+	      System.out.println("Publicado en: " + libros.get(i).getPublicadoEn());
+	      System.out.println("Titulo: " + libros.get(i).getTitulo());
+	      System.out.println("Autor: " + libros.get(i).getAutor());
+	      System.out.println("--------------------------------------------" );
+	      
+	    }*/
+	    //AÑADIR
+	    accDOM.añadirlibro(libros, "2016", "El pepe olvidado: Harambe", "Internetz");
+	    //MODIFICAR
+	    //accDOM.modificarLibro(libros, "Mis memorias","2020");
+	    //BORRAR
+	    //accDOM.eliminarLibro(libros, "El Capote");
+	    
+	    accDOM.mostrarArray(libros);
+	    
+	    //pasar del arbol DOM al fichero XML
+	    //accDOM.guardarDOM_XML("LibrosXML.xml");
+	  }
 
-			
-			
-			
-			
-			
-			
-		}
 		//pasar del arbol DOM al fichero XML
 	  //	accDOM.guardarDOM_XML("librosXML.xml");
 		
 	}
-
-		
-		
-		
-	}
+	
 	
 	
 	
