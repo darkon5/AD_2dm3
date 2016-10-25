@@ -1,0 +1,120 @@
+package Primerito;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import org.xml.sax.Attributes;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
+
+public class ReadXMLFile {
+
+   public static void main(String argv[]) {
+
+    try {
+
+	SAXParserFactory factory = SAXParserFactory.newInstance();
+	SAXParser saxParser = factory.newSAXParser();
+
+	DefaultHandler handler = new DefaultHandler() {
+
+	boolean bTitulo = false;
+	boolean bAutor = false;
+	boolean bISBN = false;
+	boolean bNumeroEj = false;
+	boolean bEditorial = false;
+	boolean bNumPag = false;
+	boolean bAño = false;
+
+	public void startElement(String uri, String localName,String qName,
+                Attributes attributes) throws SAXException {
+
+		//System.out.println("Start Element :" + qName);
+
+		if (qName.equalsIgnoreCase("TITULO")) {
+			bTitulo = true;
+		}
+
+		if (qName.equalsIgnoreCase("AUTOR")) {
+			bAutor = true;
+		}
+
+		if (qName.equalsIgnoreCase("ISBN")) {
+			bISBN = true;
+		}
+
+		if (qName.equalsIgnoreCase("NumeroEj")) {
+			bNumeroEj = true;
+		}
+		
+		if (qName.equalsIgnoreCase("Editorial")) {
+			bEditorial = true;
+		}
+		
+		if (qName.equalsIgnoreCase("NumPag")) {
+			bNumPag = true;
+		}
+		
+		if (qName.equalsIgnoreCase("Año")) {
+			bAño = true;
+		}
+		System.out.println("&n");
+		
+
+	}
+
+	public void endElement(String uri, String localName,
+		String qName) throws SAXException {
+
+		//System.out.println("End Element :" + qName);
+
+	}
+
+	public void characters(char ch[], int start, int length) throws SAXException {
+
+		if (bTitulo) {
+			System.out.println("Titulo: " + new String(ch, start, length));
+			bTitulo = false;
+		}
+
+		if (bAutor) {
+			System.out.println("Autor: " + new String(ch, start, length));
+			bAutor = false;
+		}
+
+		if (bISBN) {
+			System.out.println("ISBN: " + new String(ch, start, length));
+			bISBN = false;
+		}
+
+		if (bNumeroEj) {
+			System.out.println("Ejemplar numero: " + new String(ch, start, length));
+			bNumeroEj = false;
+		}
+
+		if (bEditorial) {
+			System.out.println("Editorial: " + new String(ch, start, length));
+			bEditorial = false;
+		}
+
+		if (bNumPag) {
+			System.out.println("NumPag : " + new String(ch, start, length));
+			bNumPag = false;
+		}
+
+		if (bAño) {
+			System.out.println("Año : " + new String(ch, start, length));
+			bAño = false;
+		}
+
+	}
+
+     };
+
+       saxParser.parse("libros.xml", handler);
+
+     } catch (Exception e) {
+       e.printStackTrace();
+     }
+
+   }
+
+}

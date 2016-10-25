@@ -1,8 +1,6 @@
 package MetaData;
 
 import java.sql.*;
-
-
 import org.apache.commons.dbcp.BasicDataSource;
 
 

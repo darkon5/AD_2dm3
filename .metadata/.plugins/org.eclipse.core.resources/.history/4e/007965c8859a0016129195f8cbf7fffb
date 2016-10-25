@@ -1,0 +1,17 @@
+package Primerito;
+
+import javax.xml.parsers.*;
+import org.xml.sax.*;
+import org.xml.sax.helpers.*;
+
+import java.util.*;
+import java.io.*;
+
+public class ReadXMLFile {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

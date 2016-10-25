@@ -1,0 +1,60 @@
+package sentenciasSQL;
+
+import java.sql.*;
+import org.apache.commons.dbcp.BasicDataSource;
+
+import MetaData.MetaData;
+
+public class main {
+	
+	Connection con = null;
+
+public void crearConexion(String nombreBD, String user, String pass){
+
+	BasicDataSource bdSource = new BasicDataSource();
+	bdSource.setUrl("jdbc:mysql://127.0.0.1:3306/"+nombreBD);
+	bdSource.setUsername(user);
+	bdSource.setPassword(pass);
+	
+	try{
+		if(con !=null){
+			System.out.println("No se puede ver crear la conexion");
+		}else{
+			con = bdSource.getConnection();
+			System.out.println("\nConexion creada con la BD"+ nombreBD);
+		}
+	}catch(Exception e){
+		e.printStackTrace();
+	}
+}
+
+public void cerrarConexion(){
+	try{
+		con.close();
+		System.out.println("Conexion cerrada con exito! :)");
+		
+	}catch(SQLException e){
+		e.printStackTrace();
+	}
+}
+
+public void selectPreestablecida(String valor, String valor2){
+	try{
+		String query = "Select * FROM coches WHERE importe > ? and < ?";
+		
+		
+	}catch(SQLException e){
+		
+	}
+}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		MetaData accJDBC = new MetaData();
+		accJDBC.crearConexion("coches","user_empl","vinagres");
+		accJDBC.cerrarConexion();
+
+	}
+
+}
